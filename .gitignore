@@ -6,4 +6,6 @@ vendor
 .bundle
 Gemfile.lock
 .rvmrc
-
+.DS_Store
+.idea
+randexp-*.*.*.gem

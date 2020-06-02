@@ -3,7 +3,7 @@ class Randgen
   SENTENCES_PER_PARAGRAPH = 3..8
 
   def self.bool(options = {})
-    ['true', 'false'].pick
+    %W(true false).pick
   end
 
   def self.lchar(options = {})
@@ -19,7 +19,7 @@ class Randgen
   end
 
   def self.whitespace(options = {})
-    ["\t", "\n", "\r", "\f"].pick
+    %W(\t \n \r \f).pick
   end
 
   def self.digit(options = {})
@@ -35,7 +35,6 @@ class Randgen
       word = Randexp::Dictionary.words(options).pick
       word ||= options[:length].of { alpha_numeric }.join
     end until word =~ /^\w+$/
-
     word
   end
 
@@ -52,11 +51,11 @@ class Randgen
   end
 
   def self.name(options = {})
-    "#{first_name(options)} #{surname(options)}"
+    "#{ first_name(options) } #{ surname(options) }"
   end
 
   def self.email(options = {})
-    domain = options.fetch(:domain, "#{word(options)}.example.org")
+    domain = options.fetch(:domain, "#{ word(options) }.example.org")
     "#{word(options)}@#{domain}"
   end
 

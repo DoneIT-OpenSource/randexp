@@ -43,6 +43,10 @@ class Randexp
       end
     end
 
+    def self.range(cell, quantity)
+      intersection(cell, quantity)
+    end
+
     def self.union(cell, quantity)
       case quantity
       when :'?'       then ['', cell.map {|s| reduce(s)} * ''].pick

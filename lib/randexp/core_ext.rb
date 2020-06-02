@@ -1,6 +1,5 @@
 dir = File.dirname(__FILE__)
 
-require dir + '/core_ext/array'
-require dir + '/core_ext/integer'
-require dir + '/core_ext/range'
-require dir + '/core_ext/regexp'
+%W(array integer range regexp).each do |file_name|
+  require File.join(dir, 'core_ext', file_name)
+end

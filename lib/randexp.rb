@@ -11,12 +11,11 @@ class Randexp
 end
 
 dir = File.dirname(__FILE__) + '/randexp'
-require dir + '/version'
-require dir + '/core_ext'
-require dir + '/dictionary'
-require dir + '/parser'
-require dir + '/randgen'
-require dir + '/reducer'
-require dir + '/wordlists/female_names'
-require dir + '/wordlists/male_names'
-require dir + '/wordlists/real_name'
+
+%W(version core_ext dictionary parser randgen reducer).each do |file_name|
+  require File.join(dir, file_name)
+end
+
+%W(female_names male_names real_name).each do |file_name|
+  require File.join(dir, 'wordlists', file_name)
+end
